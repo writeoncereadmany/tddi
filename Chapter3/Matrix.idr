@@ -8,7 +8,7 @@ addMatrix xs ys = zipWith (zipWith (+)) xs ys
 
 transposeMatrix : Matrix m n elem -> Matrix n m elem
 transposeMatrix [] = replicate _ []
-transposeMatrix (x :: xs) =  zipWith (::) x (transposeMatrix xs)
+transposeMatrix (x :: xs) = zipWith (::) x (transposeMatrix xs)
 
 multRow : Num num => Matrix p m num -> Vect m num -> Vect p num
 multRow ys x = map (sum . zipWith (*) x) ys
