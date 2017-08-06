@@ -1,0 +1,13 @@
+
+
+data InfList : Type -> Type where
+  (::) : (value : elem) -> Inf (InfList elem) -> InfList elem
+
+%name InfList xs, ys, zs
+
+countFrom : Integer -> InfList Integer
+countFrom x = x :: countFrom (x + 1)
+
+getPrefix : (count : Nat) -> InfList ty -> List ty
+getPrefix Z _ = []
+getPrefix (S k) (value :: xs) = value :: getPrefix k
